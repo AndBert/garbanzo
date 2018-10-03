@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Devices>
+    <Device>
+        <Name>Monitor</Name>
+        <Original>Japan</Original>
+        <Price>200</Price>
+        <Type>
+        	<peripheral>true</peripheral>
+        	<consumption>300</consumption>
+        	<cooler>false</cooler>
+        	<group>IOdevice</group>
+        	<port>LPT</port>
+        </Type>
+        <Critical>true</Critical>
+    </Device>
+    
+      <Device>
+        <Name>Keyboard</Name>
+        <Original>China</Original>
+        <Price>20</Price>
+        <Type>
+        	<peripheral>true</peripheral>
+        	<consumption>5</consumption>
+        	<cooler>false</cooler>
+        	<group>IOdevice</group>
+        	<port>USB</port>
+        </Type>
+        <Critical>false</Critical>
+     </Device>
+     
+     <Device>
+        <Name>Mouse</Name>
+        <Original>Taiwan</Original>
+        <Price>10</Price>
+        <Type>
+        	<peripheral>true</peripheral>
+        	<consumption>2</consumption>
+        	<cooler>false</cooler>
+        	<group>IOdevice</group>
+        	<port>USB</port>
+        </Type>
+        <Critical>false</Critical>
+     </Device>
+     
+     <Device>
+        <Name>SystemBlock</Name>
+        <Original>Japan</Original>
+        <Price>800</Price>
+        <Type>
+        	<peripheral>false</peripheral>
+        	<consumption>700</consumption>
+        	<cooler>true</cooler>
+        	<group>Other</group>
+        	<port>COM</port>
+        </Type>
+        <Critical>true</Critical>
+     </Device>
+     
+</Devices>    
