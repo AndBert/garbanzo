@@ -1,0 +1,73 @@
+-- --------------------------------------------------------
+-- Хост:                         127.0.0.1
+-- Версия сервера:               8.0.12 - MySQL Community Server - GPL
+-- Операционная система:         Win64
+-- HeidiSQL Версия:              9.5.0.5196
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+
+-- Дамп структуры базы данных book
+CREATE DATABASE IF NOT EXISTS `book` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `book`;
+
+-- Дамп структуры для таблица book.author
+CREATE TABLE IF NOT EXISTS `author` (
+  `author_id` int(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`author_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- Дамп данных таблицы book.author: ~0 rows (приблизительно)
+/*!40000 ALTER TABLE `author` DISABLE KEYS */;
+INSERT INTO `author` (`author_id`, `name`) VALUES
+	(1, 'Blinov'),
+	(2, 'Schildt'),
+	(3, 'Eckel');
+/*!40000 ALTER TABLE `author` ENABLE KEYS */;
+
+-- Дамп структуры для таблица book.book
+CREATE TABLE IF NOT EXISTS `book` (
+  `book_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) DEFAULT NULL,
+  `author_id` int(20) DEFAULT NULL,
+  `genre_id` int(10) DEFAULT NULL,
+  `isbn` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`book_id`),
+  KEY `author_id` (`author_id`),
+  KEY `genre_id` (`genre_id`),
+  CONSTRAINT `FK_book_author` FOREIGN KEY (`author_id`) REFERENCES `author` (`author_id`),
+  CONSTRAINT `FK_book_genre` FOREIGN KEY (`genre_id`) REFERENCES `genre` (`genre_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- Дамп данных таблицы book.book: ~0 rows (приблизительно)
+/*!40000 ALTER TABLE `book` DISABLE KEYS */;
+INSERT INTO `book` (`book_id`, `title`, `author_id`, `genre_id`, `isbn`) VALUES
+	(1, 'Java. Methods of programming', 1, 1, '978-985-7058-30-3'),
+	(2, 'Java 8. The compete reference', 2, 2, '978-5-8459-1918-2'),
+	(3, 'Thinking in Java', 3, 3, '978-5-496-01127-3');
+/*!40000 ALTER TABLE `book` ENABLE KEYS */;
+
+-- Дамп структуры для таблица book.genre
+CREATE TABLE IF NOT EXISTS `genre` (
+  `genre_id` int(10) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`genre_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- Дамп данных таблицы book.genre: ~0 rows (приблизительно)
+/*!40000 ALTER TABLE `genre` DISABLE KEYS */;
+INSERT INTO `genre` (`genre_id`, `name`) VALUES
+	(1, '\r\ntraining manual'),
+	(2, '\r\nstudy manual'),
+	(3, 'programming');
+/*!40000 ALTER TABLE `genre` ENABLE KEYS */;
+
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
